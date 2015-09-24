@@ -33,6 +33,13 @@ namespace Branddy
             HarassMenu.Add("UseWharass", new CheckBox("Use W"));
             HarassMenu.Add("UseEharass", new CheckBox("Use E"));
             HarassMenu.Add("manam", new Slider("Min. mana to harass", 40, 0, 100));
+
+            Draw = Brand.AddSubMenu("Drawings", "drawing");
+            Draw.Add("qrange", new CheckBox("Draw Q Range"));
+            Draw.Add("wrange", new CheckBox("Draw W Range"));
+            Draw.Add("erange", new CheckBox("Draw E Range"));
+            Draw.Add("rrange", new CheckBox("Draw R Range"));
+
                         
         }
     }

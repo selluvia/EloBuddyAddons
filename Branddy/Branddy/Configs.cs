@@ -42,6 +42,9 @@ namespace Branddy
                 case Orbwalker.ActiveModes.Harass:
                     Harass();
                     return;
+                case Orbwalker.ActiveModes.LaneClear:
+                    LaneClear();
+                    return;
             }
         }
 
@@ -102,6 +105,23 @@ namespace Branddy
             }
         }
 
+        public static void LaneClear()
+        {
+            foreach (
+                var m in
+                    ObjectManager.Get<Obj_AI_Minion>()
+                        .Where(n => n.CountEnemiesInRange(1500) >= _Player.CountEnemiesInRange(1500) && n.IsEnemy))
+            {
+                if (!m.IsValidTarget(2500))
+                    continue;
+                if (m.Health <= _Player.GetAutoAttackDamage(m, true))
+                {
+                    W.Cast(m.Position);
+                }
+
+            }
+        }
+        // Auto Stun still not working - Need to identify Ablaze buff.
         public static void AutoStun()
         {
           
@@ -110,12 +130,14 @@ namespace Branddy
                 foreach (
                     var target in
                         HeroManager.Enemies.Where(
-                            tgt => tgt.IsValidTarget(Q.Range) && tgt.HasBuff("ablaze")))
+                            tgt => tgt.IsValidTarget(Q.Range) && tgt.HasBuff("dot")))
                 {
                     if (Q.GetPrediction(target).HitChance >= HitChance.High)
                         Q.Cast(target);
                 }
             }
         }
+
+       
     }
 }
