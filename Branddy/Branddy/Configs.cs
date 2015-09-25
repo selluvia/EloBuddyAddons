@@ -100,7 +100,7 @@ namespace Branddy
             
 
             if (Bramenu.ComboMenu["useR"].Cast<CheckBox>().CurrentValue 
-                && R.IsReady() && target.Health <= Damage.Rdmg(target))
+                && R.IsReady() && target.Health <= Damage.Rdmg(target) * 2)
             {
                 R.Cast(target);
             }
@@ -172,7 +172,7 @@ namespace Branddy
             {
                 if (target.IsValidTarget(E.Range) && target.HealthPercent <= 40)
                 {
-                    if (Damage.Qdmg(target) + Damage.Wdmg(target) + Damage.Edmg(target) >= champ.Health)
+                    if (Damage.Qdmg(target) + Damage.Wdmg(target) + Damage.Rdmg(target) >= champ.Health)
                     {
                         if (Bramenu.KS["useigniteks"].Cast<CheckBox>().CurrentValue && _Player.GetSummonerSpellDamage(target, DamageLibrary.SummonerSpells.Ignite) >= champ.Health)
                         {
