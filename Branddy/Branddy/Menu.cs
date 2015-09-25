@@ -13,7 +13,7 @@ namespace Branddy
 {
     internal class Bramenu
     {
-        public static Menu Brand, ComboMenu, HarassMenu, Draw;
+        public static Menu Brand, ComboMenu, HarassMenu, KS, Draw;
 
         public static void StartMenu()
         {
@@ -21,7 +21,8 @@ namespace Branddy
             Brand.AddLabel("Brand add-on by selluvia");
             Brand.AddLabel("Version 0.1 Beta");
 
-            ComboMenu = Brand.AddSubMenu("Combo Settings", "combo");
+            ComboMenu = Brand.AddSubMenu("Combo", "combo");
+            ComboMenu.AddGroupLabel("Combo Settings");
             ComboMenu.Add("useQ", new CheckBox("Use Q"));
             ComboMenu.Add("useW", new CheckBox("Use W"));
             ComboMenu.Add("useE", new CheckBox("Use E"));
@@ -29,16 +30,26 @@ namespace Branddy
             ComboMenu.AddSeparator();
             ComboMenu.Add("smartQ", new CheckBox("Use Smart Q"));
 
-            HarassMenu = Brand.AddSubMenu("Harass Settings", "harass");
+            HarassMenu = Brand.AddSubMenu("Harass", "harass");
+            HarassMenu.AddGroupLabel("Harass Settings");
             HarassMenu.Add("UseWharass", new CheckBox("Use W"));
             HarassMenu.Add("UseEharass", new CheckBox("Use E"));
             HarassMenu.Add("manam", new Slider("Min. mana to harass", 40, 0, 100));
 
-            Draw = Brand.AddSubMenu("Drawings", "drawing");
-            Draw.Add("qrange", new CheckBox("Draw Q Range"));
-            Draw.Add("wrange", new CheckBox("Draw W Range"));
-            Draw.Add("erange", new CheckBox("Draw E Range"));
-            Draw.Add("rrange", new CheckBox("Draw R Range"));
+            KS = Brand.AddSubMenu("KS Options", "ks");
+            KS.AddGroupLabel("KillSteal Settings");
+            KS.Add("useigniteks", new CheckBox("Use Ignite"));
+            KS.Add("useqks", new CheckBox("Use Q"));
+            KS.Add("usewks", new CheckBox("Use W"));
+            KS.Add("userks", new CheckBox("Use R"));
+
+            Draw = Brand.AddSubMenu("Drawing", "draw");
+            Draw.AddGroupLabel("Drawing Settings");
+            Draw.Add("drawQ", new CheckBox("Draw Q", true));
+            Draw.Add("drawW", new CheckBox("Draw W", true));
+            Draw.Add("drawE", new CheckBox("Draw E", true));
+            Draw.Add("drawR", new CheckBox("Draw R", true));
+
 
                         
         }
