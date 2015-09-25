@@ -153,7 +153,7 @@ namespace Branddy
                 foreach (
                     var target in
                         HeroManager.Enemies.Where(
-                            tgt => tgt.IsValidTarget(Q.Range) && tgt.HasBuff("summonerdot")))
+                            tgt => tgt.IsValidTarget(Q.Range) && tgt.HasBuff("summonerdott")))
                 {
                     if (Q.GetPrediction(target).HitChance >= HitChance.High)
                         Q.Cast(target);
